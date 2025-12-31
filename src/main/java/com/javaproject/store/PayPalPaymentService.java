@@ -1,5 +1,8 @@
 package com.javaproject.store;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PayPalPaymentService implements PaymentService{
 
     @Override
