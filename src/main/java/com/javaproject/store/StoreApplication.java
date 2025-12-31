@@ -9,7 +9,7 @@ public class StoreApplication {
 
         public static void main(String[] args) {
             ApplicationContext context= SpringApplication.run(StoreApplication.class, args);
-            context.getBean(OrderService.class).placeOrder();
+            context.getBean(NotificationManager.class).sendNotification("Hello World");
 
     //        var orderService= new OrderService();
     //        orderService.setPaymentService(new PayPalPaymentService());
