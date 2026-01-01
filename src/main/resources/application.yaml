@@ -6,4 +6,8 @@ stripe:
   timeout:1000
   supported_currencies:USD,EUR
   enabled:true
-payment-gateway: paypal
+payment-gateway:
+  paypal
+mail:
+  host: https://smtp.gmail.com
+  port: 5761
