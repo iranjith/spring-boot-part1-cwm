@@ -5,13 +5,3 @@ spring:
     url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
     username: root
     password: expedition21
-stripe:
-  apiUrl:https://api.stripe.com
-  timeout:1000
-  supported_currencies:USD,EUR
-  enabled:true
-payment-gateway:
-  paypal
-mail:
-  host: https://smtp.gmail.com
-  port: 5761
