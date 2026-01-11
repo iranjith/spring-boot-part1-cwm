@@ -3,10 +3,16 @@ package com.javaproject.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Builder
 @Entity
 @Table(name = "users")
@@ -22,5 +28,42 @@ public class User {
     private String email;
     @Column(nullable = false, name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    private List<Address> addresses= new ArrayList<>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+        address.setUser(null);
+    }
+
+    public void addTag(String tagName) {
+        tags.add(new Tag(tagName));
+    }
+
+    public void removeTag(Tag tag) {
+        tag.getUsers().remove(this);
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_tags",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+
+    @Builder.Default
+    private Set<Tag> tags = new HashSet<>();
+
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
+
 
 }
