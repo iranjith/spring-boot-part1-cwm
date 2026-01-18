@@ -2,6 +2,7 @@ package com.javaproject.store;
 
 import com.javaproject.store.entities.User;
 import com.javaproject.store.repositories.UserRepository;
+import com.javaproject.store.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,11 +12,22 @@ public class StoreApplication {
 
         public static void main(String[] args) {
             ApplicationContext context= SpringApplication.run(StoreApplication.class, args);
-            var repository= context.getBean(UserRepository.class);
 
-//            repository.findAll().forEach(u-> System.out.println(u.getEmail()));
+            var service= context.getBean(UserService.class);
+//            service.persistRelated();
+            service.deleteRelated();
+//            service.fetchAddresses(var);
+
+//            var repository= context.getBean(UserRepository.class);
 //
-//            repository.deleteAll();
+//            var user= User.builder()
+//                    .name("johndoe")
+//                    .email("johndoe@gmail.com")
+//                    .password("password")
+//                    .build();
+//
+//
+//            repository.save(user);
 
 
 
