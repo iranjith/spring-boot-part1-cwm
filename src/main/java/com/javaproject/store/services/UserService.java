@@ -135,6 +135,14 @@ public class UserService {
         System.out.println(user);
     }
 
+    @Transactional
+    public void fetchUsers(){
+        var users= userRepository.findAllWithAddress();
+        users.forEach(u->{
+            System.out.println(u);
+            u.getAddresses().forEach(System.out::println);
+        });
+    }
 
 
 }

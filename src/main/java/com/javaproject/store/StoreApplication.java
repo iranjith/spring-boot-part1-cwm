@@ -16,7 +16,7 @@ public class StoreApplication {
             var service= context.getBean(UserService.class);
 //            service.updateProductPrices();
 //            service.fetchProducts();
-            service.fetchUser();
+            service.fetchUsers();
 
             //service.manageProducts();
 //            service.persistRelated();
