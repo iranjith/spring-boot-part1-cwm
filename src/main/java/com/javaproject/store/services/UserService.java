@@ -1,14 +1,16 @@
 package com.javaproject.store.services;
 
 import com.javaproject.store.entities.Address;
+import com.javaproject.store.entities.Category;
+import com.javaproject.store.entities.Product;
 import com.javaproject.store.entities.User;
-import com.javaproject.store.repositories.AddressRepository;
-import com.javaproject.store.repositories.ProfileRepository;
-import com.javaproject.store.repositories.UserRepository;
+import com.javaproject.store.repositories.*;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Service
@@ -17,7 +19,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final ProfileRepository profileRepository;
     private final AddressRepository addressRepository;
+    private final ProductRepository productRepository;
     private final EntityManager em;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public void showEntityStates(){
@@ -86,6 +90,33 @@ public class UserService {
         var address=user.getAddresses().getFirst();
         user.removeAddress(address);
         userRepository.save(user);
+    }
+
+
+    @Transactional
+    public void manageProducts() {
+//        var user= userRepository.findById(2L).orElseThrow();
+//        var products= productRepository.findAll();
+//        products.forEach(user::addFavoriteProduct);
+//        userRepository.save(user);
+//
+
+        productRepository.deleteById(4L);
+
+
+//        var category= categoryRepository.findById((byte)1).orElseThrow();
+//
+//        var product = Product.builder()
+//                .name("product 2")
+//                .description("description 2")
+//                .price(BigDecimal.valueOf(10.00))
+//                .category(category)
+//                .build();
+//
+//        productRepository.save(product);
+
+
+
     }
 
 

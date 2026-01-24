@@ -73,5 +73,7 @@ public class User {
     private Set<Product> wishList = new HashSet<>();
 
 
-
+    public void addFavoriteProduct(Product product){
+        wishList.add(product);
+    }
 }

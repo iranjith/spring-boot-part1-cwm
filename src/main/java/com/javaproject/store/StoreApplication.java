@@ -14,8 +14,11 @@ public class StoreApplication {
             ApplicationContext context= SpringApplication.run(StoreApplication.class, args);
 
             var service= context.getBean(UserService.class);
+            service.manageProducts();
+
+
 //            service.persistRelated();
-            service.deleteRelated();
+//            service.deleteRelated();
 //            service.fetchAddresses(var);
 
 //            var repository= context.getBean(UserRepository.class);
