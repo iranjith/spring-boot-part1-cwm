@@ -14,9 +14,11 @@ public class StoreApplication {
             ApplicationContext context= SpringApplication.run(StoreApplication.class, args);
 
             var service= context.getBean(UserService.class);
-            service.manageProducts();
+//            service.updateProductPrices();
+//            service.fetchProducts();
+            service.fetchUser();
 
-
+            //service.manageProducts();
 //            service.persistRelated();
 //            service.deleteRelated();
 //            service.fetchAddresses(var);
