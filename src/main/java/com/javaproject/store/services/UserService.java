@@ -1,8 +1,6 @@
 package com.javaproject.store.services;
 
 import com.javaproject.store.entities.Address;
-import com.javaproject.store.entities.Category;
-import com.javaproject.store.entities.Product;
 import com.javaproject.store.entities.User;
 import com.javaproject.store.repositories.*;
 import jakarta.persistence.EntityManager;
@@ -15,6 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Service
 public class UserService {
+
 
     private final UserRepository userRepository;
     private final ProfileRepository profileRepository;
@@ -144,6 +143,16 @@ public class UserService {
             System.out.println(u);
             u.getAddresses().forEach(System.out::println);
         });
+    }
+
+    @Transactional
+    public void printLoyalProfiles(){
+        var users=userRepository.findLoyalUsers(2);
+        users.forEach(profile -> {
+            System.out.println(profile.getId()+" : " + profile.getEmail());
+//            System.out.println(profile.getUser().getName());
+        });
+
     }
 
 
