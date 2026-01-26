@@ -1,11 +1,14 @@
 package com.javaproject.store.services;
 
 import com.javaproject.store.entities.Address;
+import com.javaproject.store.entities.Product;
 import com.javaproject.store.entities.User;
 import com.javaproject.store.repositories.*;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -125,8 +128,19 @@ public class UserService {
 
     @Transactional
     public void fetchProducts(){
-        var products=productRepository.findProducts(BigDecimal.valueOf(1), BigDecimal.valueOf(15));
-        products.forEach(System.out::println);
+//        var products=productRepository.findProducts(BigDecimal.valueOf(1), BigDecimal.valueOf(15));
+//        products.forEach(System.out::println);
+
+        var product= new Product();
+        product.setName("TV");
+
+        var matcher=ExampleMatcher.matching()
+                .withIgnoreNullValues()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+
+        var example = Example.of(matcher);
+        productRepository.findAll(example).forEach(System.out::println);
     }
 
     @Transactional
