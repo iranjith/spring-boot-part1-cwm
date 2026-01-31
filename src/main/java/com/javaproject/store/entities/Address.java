@@ -3,34 +3,34 @@ package com.javaproject.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Setter
-@Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "addresses")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name="street")
+    @Column(name = "street")
     private String street;
 
-    @Column(name="city")
+    @Column(name = "city")
     private String city;
 
-    @Column(name="state")
-    private String state;
-
-    @Column(name="zip")
+    @Column(name = "zip")
     private String zip;
 
+    @Column(name = "state")
+    private String state;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     @ToString.Exclude
     private User user;
 }
